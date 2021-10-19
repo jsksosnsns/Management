@@ -94,7 +94,7 @@ buttons = [
   ],
     [
         InlineKeyboardButton(
-            text="➕️ Powered by ➕️", url="t.me/DeZilleius",
+            text="➕️ Powered by ➕️", url="https://t.me/DeZilleius",
     ],
 [
         InlineKeyboardButton(
