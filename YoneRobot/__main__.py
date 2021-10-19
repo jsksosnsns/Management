@@ -91,6 +91,10 @@ buttons = [
     ],
     [
         InlineKeyboardButton(text="ʜᴇʟᴘ & ᴄᴏᴍᴍᴀɴᴅꜱ❔", callback_data="help_back"),
+  ],
+    [
+        InlineKeyboardButton(
+            text="➕️ Powered by ➕️", url="t.me/DeZilleius?startgroup=true"),
     ],
 ]
 
