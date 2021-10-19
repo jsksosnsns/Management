@@ -38,7 +38,7 @@ def afk(update: Update, context: CallbackContext):
     sql.set_afk(update.effective_user.id, reason)
     fname = update.effective_user.first_name
     try:
-        update.effective_message.reply_text("{} is now away!{}".format(fname, notice))
+        update.effective_message.reply_text("{} fallen into a deep sleep!{}".format(fname, notice))
     except BadRequest:
         pass
 
@@ -65,7 +65,8 @@ def no_longer_afk(update: Update, context: CallbackContext):
                 "{} is back online!",
                 "{} is finally here!",
                 "Welcome back! {}",
-                "Where is {}?\nIn the chat!",
+                "Where is {}?\nIn the chat!"
+                "{} should delete ur telegram!"
             ]
             chosen_option = random.choice(options)
             update.effective_message.reply_text(chosen_option.format(firstname))
