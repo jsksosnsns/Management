@@ -94,7 +94,11 @@ buttons = [
   ],
     [
         InlineKeyboardButton(
-            text="➕️ Powered by ➕️", url="t.me/DeZilleius?startgroup=true"),
+            text="➕️ Powered by ➕️", url="t.me/DeZilleius",
+    ],
+[
+        InlineKeyboardButton(
+            text="➕️ logs ➕️", url="https://t.me/mikasa_logs",
     ],
 ]
 
@@ -388,7 +392,7 @@ def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text=""" Hi..🤗 I'm *yone*
+            text=""" Hi..🤗 I'm *Mikasa*
                  \nHere is the [Source Code](https://github.com/Aarukami/YoneRobot) .""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
