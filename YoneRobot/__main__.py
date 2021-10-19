@@ -94,11 +94,11 @@ buttons = [
   ],
     [
         InlineKeyboardButton(
-            text="➕️ Powered by ➕️", url="https://t.me/DeZilleius",
+            text=" Powered by ", url="https://t.me/DeZilleius",
     ],
 [
         InlineKeyboardButton(
-            text="➕️ logs ➕️", url="https://t.me/mikasa_logs",
+            text=" logs ", url="https://t.me/mikasa_logs",
     ],
 ]
 
