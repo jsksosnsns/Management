@@ -4,7 +4,7 @@ import re
 from sys import argv
 from typing import Optional
 
-from YoneRobot import (
+from AsunaRobot import (
     ALLOW_EXCL,
     CERT_PATH,
     DONATION_LINK,
@@ -25,9 +25,9 @@ from YoneRobot import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from YoneRobot.modules import ALL_MODULES
-from YoneRobot.modules.helper_funcs.chat_status import is_user_admin
-from YoneRobot.modules.helper_funcs.misc import paginate_modules
+from AsunaRobot.modules import ALL_MODULES
+from AsunaRobot.modules.helper_funcs.chat_status import is_user_admin
+from AsunaRobot.modules.helper_funcs.misc import paginate_modules
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import (
     BadRequest,
@@ -74,42 +74,53 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-ʜᴇʟʟᴏ [🤗](https://te.legra.ph/file/45f6ceaa14776c835fd54.jpg), ɪᴍ MIkasa A highy Advanced Bot With LOts of Amazing Tools.
-`ɪ'ᴍ ʜᴇʀᴇ ᴛᴏ ʜᴇʟᴘ ʏᴏᴜ ᴍᴀɴᴀɢᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘꜱ! ʜɪᴛ` /help   
+Hello ! My name is [Rikka](https://telegra.ph/file/64c8c18cc715e1ed52e76.jpg)!
+I'm Anime Themed group management bot with useful and powerful features that will help u to manage your group smoothly .if u want to know about command then do /help for any 
+doubts or any queries about me then ask at the support group ✨
 """
 
 buttons = [
     [
         InlineKeyboardButton(
-            text="➕️ ᴀᴅᴅ ʏᴏɴᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕️", url="t.me/Yone_Robot?startgroup=true"),
+            text="➕️ ADD ME TO YOUR GROUP ➕️",url="t.me/komiXrobot?startgroup=true"),
     ],
     [
-        InlineKeyboardButton(text="ᴀʙᴏᴜᴛ", callback_data="yone_"),
+        InlineKeyboardButton(text="ℹ️ ABOUT", callback_data="asuna_"),
+        InlineKeyboardButton(text="📚 COMMANDS", callback_data="help_back"),
+     
+    ],
+    [     InlineKeyboardButton(
+            text="🤴 OWNER", url="https://telegram.dog/Tanjiro014"),
+    
         InlineKeyboardButton(
-            text="ꜱᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}"
+            text="📺 ACG", url="https://telegram.dog/AcGc_01"),
+    ],
+    [
+        InlineKeyboardButton(
+            text="📕 Logs", url="https://t.me/Rikkalog"),
+          
+
+
+InlineKeyboardButton(
+            text="👥 SUPPORT", url="https://telegram.dog/RikkaSupport"
         ),
-    ],
-    [
-        InlineKeyboardButton(text="ʜᴇʟᴘ & ᴄᴏᴍᴍᴀɴᴅꜱ❔", callback_data="help_back"),
-    ],
-    [
-        InlineKeyboardButton(text="Powered by", url="https://t.me/DeZilleius"),
-    ],
-    [
-        InlineKeyboardButton(text="logs", url="https://t.me/mikasa_logs"),
+
+    
+        InlineKeyboardButton(
+                    text="💟updates", url="https://t.me/RikkaUpdate"
+        ),
     ],
 ]
 
 
 HELP_STRINGS = """
-`ʜɪ.. ɪ'ᴍ` [Mikasa🙋‍♀️](https://te.legra.ph/file/45f6ceaa14776c835fd54.jpg) 
-`ᴄʟɪ
-ᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴꜱ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ᴅᴏᴄᴜᴍᴇɴᴛᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ꜱᴘᴇᴄɪꜰɪᴄ ᴍᴏᴅᴜʟᴇꜱ..`"""
+`Hi.. I'm` [Rikka]("https://te.legra.ph/file/cfc57e6203e2f8585b53f.jpg") 
+`Click on the buttons below to get documentation about specific modules..`"""
 
-yone_IMG = "https://te.legra.ph/file/45f6ceaa14776c835fd54.jpg"
+BAKA_IMG = "https://te.legra.ph/file/36e4ad41a98aa492ff2fb.png"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project via [Paypal](#) or by contacting @kittu5588 \
+ You can support the project via [Paypal](#) or by contacting @a_viyu or @simpleboy786 \
  Supporting isnt always financial! \
  Those who cannot provide monetary support are welcome to help us develop the bot at ."""
 
@@ -124,15 +135,13 @@ CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("YoneRobot.modules." + module_name)
+    imported_module = importlib.import_module("AsunaRobot.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
     if imported_module.__mod_name__.lower() not in IMPORTED:
         IMPORTED[imported_module.__mod_name__.lower()] = imported_module
-    else:
-        raise Exception("Can't have two modules with the same name! Please change one")
-
+    
     if hasattr(imported_module, "__help__") and imported_module.__help__:
         HELPABLE[imported_module.__mod_name__.lower()] = imported_module
 
@@ -220,11 +229,21 @@ def start(update: Update, context: CallbackContext):
                 timeout=60,
             )
     else:
-        update.effective_message.reply_text(
-            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
+      update.effective_message.reply_photo(
+          BAKA_IMG, caption="I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
                 uptime
             ),
-            parse_mode=ParseMode.HTML,
+           parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                  [
+                  InlineKeyboardButton(text="🤖Sᴜᴘᴘᴏʀᴛ🤖", url="https://telegram.dog/rikkasupport")
+                  ],
+                  [
+                  InlineKeyboardButton(text="👨‍💻Developer👨‍💻", url="https://t.me/girls_lob")
+                  ]
+                ]
+            ),
         )
 
 
@@ -352,31 +371,22 @@ def help_button(update, context):
 
 
 @run_async
-def yone_about_callback(update, context):
+def asuna_about_callback(update, context):
     query = update.callback_query
-    if query.data == "yone_":
+    if query.data == "asuna_":
         query.message.edit_text(
-            text=""" ℹ️ I'm *Mikasa*, a powerful group management bot built to help you manage your group easily.
-                 \n❍ I can restrict users.
-                 \n❍ I can greet users with customizable welcome messages and even set a group's rules.
-                 \n❍ I have an advanced anti-flood system.
-                 \n❍ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
-                 \n❍ I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
-                 \n❍ I check for admins' permissions before executing any command and more stuffs
-                 \n\n_Mikasa's licensed under the GNU General Public License v3.0_
-                 \nHere is the [💾Repository](https://github.com/Aarukami/YoneRobot).
-                 \n\nIf you have any question about yone, let us know at .""",
+            text=""" hlo .""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Back", callback_data="yone_back")
+                    InlineKeyboardButton(text="Back", callback_data="asuna_back")
                  ]
                 ]
             ),
         )
-    elif query.data == "yone_back":
+    elif query.data == "asuna_back":
         query.message.edit_text(
                 PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
@@ -391,8 +401,8 @@ def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text=""" Hi..🤗 I'm *yone*
-                 \nHere is the [Source Code](https://github.com/Aarukami/YoneRobot) .""",
+            text=""" Hi..👸 I'm *RIkka*
+                 \nHere is the [Source Code](https://github.com/Aarukami/komisan) .""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -687,7 +697,7 @@ def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
-            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "Yes I'm alive 😹")
+            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "Yes I'm online now ")
         except Unauthorized:
             LOGGER.warning(
                 "Bot isnt able to send message to support_chat, go and check!"
@@ -704,7 +714,7 @@ def main():
     settings_handler = CommandHandler("settings", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
-    about_callback_handler = CallbackQueryHandler(yone_about_callback, pattern=r"yone_")
+    about_callback_handler = CallbackQueryHandler(asuna_about_callback, pattern=r"asuna_")
     source_callback_handler = CallbackQueryHandler(Source_about_callback, pattern=r"source_")
 
     donate_handler = CommandHandler("donate", donate)
