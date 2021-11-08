@@ -74,7 +74,7 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hello ! My name is [Rikka](https://telegra.ph/file/64c8c18cc715e1ed52e76.jpg)!
+Hello ! My name is [shouko komi](https://te.legra.ph/file/1f1158b6e7062935b6115.mp4)!
 I'm Anime Themed group management bot with useful and powerful features that will help u to manage your group smoothly .if u want to know about command then do /help for any 
 doubts or any queries about me then ask at the support group ✨
 """
@@ -82,35 +82,35 @@ doubts or any queries about me then ask at the support group ✨
 buttons = [
     [
         InlineKeyboardButton(
-            text="➕️ ADD ME TO YOUR GROUP ➕️",url="t.me/komiXrobot?startgroup=true"),
+            text="➕️ ADD ME TO YOUR GROUP ➕️",url="t.me/KomiXRobot?startgroup=true"),
     ],
     [
         InlineKeyboardButton(text="ℹ️ ABOUT", callback_data="asuna_"),
+    [
         InlineKeyboardButton(text="📚 COMMANDS", callback_data="help_back"),
      
     ],
     [     InlineKeyboardButton(
-            text="🤴 OWNER", url="https://telegram.dog/Tanjiro014"),
-    
-        InlineKeyboardButton(
-            text="📺 ACG", url="https://telegram.dog/AcGc_01"),
+        text="🧒 OWNER", url="https://telegram.dog/girls_lob"),
+        
+         
+     InlineKeyboardButton(
+         text="⚜️ mhapvt", url="https://telegram.dog/mhaprvt"),
+    ],
+    [
+        InlineKeyboardButton( 
+            text="📒 Logs", url="https://t.me/komilog"),
+      
+             InlineKeyboardButton( 
+            text="👥 SUPPORT", url="https://telegram.dog/komiXsupport" ),
     ],
     [
         InlineKeyboardButton(
-            text="📕 Logs", url="https://t.me/Rikkalog"),
-          
-
-
-InlineKeyboardButton(
-            text="👥 SUPPORT", url="https://telegram.dog/RikkaSupport"
-        ),
-
-    
-        InlineKeyboardButton(
-                    text="💟updates", url="https://t.me/RikkaUpdate"
+                    text="Powered by", url="https://t.me/DeZilleius"
         ),
     ],
 ]
+
 
 
 HELP_STRINGS = """
@@ -237,7 +237,7 @@ def start(update: Update, context: CallbackContext):
             reply_markup=InlineKeyboardMarkup(
                 [
                   [
-                  InlineKeyboardButton(text="🤖Sᴜᴘᴘᴏʀᴛ🤖", url="https://telegram.dog/rikkasupport")
+                  InlineKeyboardButton(text="🤖Sᴜᴘᴘᴏʀᴛ🤖", url="https://telegram.dog/komiXsupport")
                   ],
                   [
                   InlineKeyboardButton(text="👨‍💻Developer👨‍💻", url="https://t.me/girls_lob")
@@ -401,8 +401,8 @@ def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text=""" Hi..👸 I'm *RIkka*
-                 \nHere is the [Source Code](https://github.com/Aarukami/komisan) .""",
+            text=""" Hi..👸 I'm *komi*
+                 \nHere is the [Source Code](https://github.com/Aarukami/YoneRobot) .""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
