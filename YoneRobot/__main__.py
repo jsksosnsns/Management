@@ -90,25 +90,7 @@ buttons = [
         InlineKeyboardButton(text="📚 COMMANDS", callback_data="help_back"),
      
     ],
-    [     InlineKeyboardButton(
-        text="🧒 OWNER", url="https://telegram.dog/girls_lob"),
-        
-         
-     InlineKeyboardButton(
-         text="⚜️ mhapvt", url="https://telegram.dog/mhaprvt"),
-    ],
-    [
-        InlineKeyboardButton( 
-            text="📒 Logs", url="https://t.me/komilog"),
-      
-             InlineKeyboardButton( 
-            text="👥 SUPPORT", url="https://telegram.dog/komiXsupport" ),
-    ],
-    [
-        InlineKeyboardButton(
-                    text="Powered by", url="https://t.me/DeZilleius"
-        ),
-    ],
+  
 ]
 
 
