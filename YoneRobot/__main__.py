@@ -74,15 +74,15 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hello ! My name is [shouko komi](https://te.legra.ph/file/1f1158b6e7062935b6115.mp4)!
-I'm Anime Themed group management bot with useful and powerful features that will help u to manage your group smoothly .if u want to know about command then do /help for any 
+Hello ! My name is [Nikhil](https://telegra.ph/file/0186e2c67bf19e895a3b1.jpg)!
+I'm Nikhil Themed group management bot with useful and powerful features that will help u to manage your group smoothly .if u want to know about command then do /help for any 
 doubts or any queries about me then ask at the support group ✨
 """
 
 buttons = [
     [
         InlineKeyboardButton(
-            text="➕️ ADD ME TO YOUR GROUP ➕️",url="t.me/KomiXRobot?startgroup=true"),
+            text="➕️ ADD ME TO YOUR GROUP ➕️",url="t.me/Dexdecrypt_MusicBot?startgroup=true"),
     ],
     [
         InlineKeyboardButton(text="ℹ️ ABOUT", callback_data="asuna_"),
@@ -96,13 +96,13 @@ buttons = [
 
 
 HELP_STRINGS = """
-`Hi.. I'm` [Rikka]("https://te.legra.ph/file/cfc57e6203e2f8585b53f.jpg") 
+`Hi.. I'm` [Nikhil]("https://telegra.ph/file/0186e2c67bf19e895a3b1.jpg") 
 `Click on the buttons below to get documentation about specific modules..`"""
 
-BAKA_IMG = "https://te.legra.ph/file/36e4ad41a98aa492ff2fb.png"
+BAKA_IMG = "https://telegra.ph/file/0186e2c67bf19e895a3b1.jpg"
 
-DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project via [Paypal](#) or by contacting @a_viyu or @simpleboy786 \
+DONATE_STRING = """Hi, glad to hear you want to donate!
+ You can support the project via [Paypal](#) or by contacting  \
  Supporting isnt always financial! \
  Those who cannot provide monetary support are welcome to help us develop the bot at ."""
 
@@ -219,10 +219,10 @@ def start(update: Update, context: CallbackContext):
             reply_markup=InlineKeyboardMarkup(
                 [
                   [
-                  InlineKeyboardButton(text="🤖Sᴜᴘᴘᴏʀᴛ🤖", url="https://telegram.dog/komiXsupport")
+                  InlineKeyboardButton(text="🤖Sᴜᴘᴘᴏʀᴛ🤖", url="https://t.me/DEXDECRYPT")
                   ],
                   [
-                  InlineKeyboardButton(text="👨‍💻Developer👨‍💻", url="https://t.me/girls_lob")
+                  InlineKeyboardButton(text="👨‍💻Developer👨‍💻", url="https://t.me/DEXDECRYPT")
                   ]
                 ]
             ),
@@ -383,8 +383,8 @@ def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text=""" Hi..👸 I'm *komi*
-                 \nHere is the [Source Code](https://github.com/Aarukami/YoneRobot) .""",
+            text=""" Hi.. I'm *Nikhil*
+                 \nHere is the [Source Code](https://t.me/DOST_HAI_SAB) .""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
