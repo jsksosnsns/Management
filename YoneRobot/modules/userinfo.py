@@ -278,7 +278,7 @@ def info(update: Update, context: CallbackContext):
         if spamwtc:
             text += "\n\n<b>This person is Spamwatched!</b>"
             text += f"\nReason: <pre>{spamwtc.reason}</pre>"
-            text += "\nAppeal at @SpamWatchSupport"
+            text += "\nAppeal at @DEXDECRYPT"
         else:
             pass
     except:
@@ -306,7 +306,7 @@ def info(update: Update, context: CallbackContext):
         disaster_level_present = True
 
     if disaster_level_present:
-        text += ' [<a href="https://t.me/mikasa_update_channel/3">?</a>]'.format(
+        text += ' [<a href="https://t.me/dexdecrypt">?</a>]'.format(
             bot.username
         )
 
